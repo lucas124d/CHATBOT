@@ -1,0 +1,535 @@
+{
+  "intents": [
+    {
+      "intent": "Saudação",
+      "examples": [
+        {
+          "text": "eae"
+        },
+        {
+          "text": "oi"
+        },
+        {
+          "text": "olá"
+        },
+        {
+          "text": "pode me ajudar?"
+        },
+        {
+          "text": "salve"
+        },
+        {
+          "text": "tenho uma duvida"
+        },
+        {
+          "text": "tudo bem?"
+        }
+      ],
+      "description": "apenas para iniciar o diálogo."
+    }
+  ],
+  "entities": [
+    {
+      "entity": "bolsa",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "como posso pegar bolsa",
+          "synonyms": [
+            "como consigo bolsa?",
+            "como funciona a bolsa",
+            "como funciona as bolsas?",
+            "como funciona o sistema de bolsa",
+            "como posso conseguir bolsa?",
+            "como posso fazer para obter bolsa",
+            "existe a possibilidade de bolsa",
+            "gostaria de obter bolsa",
+            "oque preciso para obter bolsa",
+            "posso conseguir bolsa?",
+            "preciso saber como funciona o sistema de bolsa",
+            "preciso saber como obter bolsa",
+            "teria como conseguir bolsa?"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "contato",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "qual o contato?",
+          "synonyms": [
+            "como contato voces?",
+            "como entro em contato?",
+            "pode me passar o email de voces?",
+            "pode me passar o telefone de voces?",
+            "qual email de contato?",
+            "qual telefone de contato"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "diciplinas",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "quais são as disciplinas",
+          "synonyms": [
+            "e quais são as discplinas?",
+            "quais as disciplinas",
+            "quais as disciplinas do",
+            "quais são as disciplinas?",
+            "quais são as matérias",
+            "quais seriam as disciplinas?",
+            "quais seriam as materias?",
+            "qual a grade",
+            "qual a grade de ensino?",
+            "qual a grade de materias",
+            "qual seria a grade "
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "duração",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "qual a duração do curso",
+          "synonyms": [
+            "qual a duração do curso de mestrado",
+            "qual a duração dos cursos",
+            "quanto tempo dura o curso",
+            "quanto tempo dura o curso de doutorado",
+            "quanto tempo dura o curso de mestrado"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "Localização",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "onde fica o campus?",
+          "synonyms": [
+            "a faculdade se localiza aonde?",
+            "como chego no campus?",
+            "como faço para chegar na FEI?",
+            "onde se localiza a faculdade?",
+            "onde se localiza o campus?",
+            "qual o ponto de referencia ?"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "obrigado",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "não, obrigado",
+          "synonyms": [
+            "me ajudou muito",
+            "muito obrigado ",
+            "nao",
+            "não",
+            "nao, ja ajudou",
+            "não precisa mais ajudar",
+            "Obrigado",
+            "valeu"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "periodo",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "periodo",
+          "synonyms": [
+            "horario",
+            "horarios",
+            "quais os períodos dos cursos",
+            "qual o periodo do curso de doutorado",
+            "qual o periodo do curso de mestrado"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "preço",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "qual o valor da mensalidade",
+          "synonyms": [
+            "gostaria de saber o valor da mensalidade",
+            "qual a mensalidade?",
+            "qual o preço da mensalidade",
+            "qual seria o preço da mensalidade ",
+            "qual seria o valor da mensalidade",
+            "quanto custa a mensalidade",
+            "sobre o preço da mensalidade"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "processo_seletivo",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "como me matricular?",
+          "synonyms": [
+            "como faço a inscrição?",
+            "como faço a matricula?",
+            "como funciona as inscrições",
+            "como me inscrevo?",
+            "como me matriculo?",
+            "como posso me inscrever",
+            "como posso me matricular?",
+            "onde posso me matricular?",
+            "quando começa as inscrições?"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    }
+  ],
+  "metadata": {
+    "api_version": {
+      "major_version": "v2",
+      "minor_version": "2018-11-08"
+    }
+  },
+  "dialog_nodes": [
+    {
+      "type": "standard",
+      "title": "Bem-vindo",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Olá sou o FEIBOT Como posso te ajudar?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "welcome",
+      "dialog_node": "Bem-vindo"
+    },
+    {
+      "type": "standard",
+      "title": "Em outros casos",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Eu não entendi. Você pode tentar reformular a frase."
+              },
+              {
+                "text": "Você pode reformular sua afirmação? Eu não estou entendendo."
+              },
+              {
+                "text": "Eu não entendi o sentido."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "random"
+          }
+        ]
+      },
+      "conditions": "anything_else",
+      "dialog_node": "Em outros casos",
+      "previous_sibling": "node_7_1632963499171",
+      "disambiguation_opt_out": true
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "o valor de ambos os cursos é de R$ 2.265,00"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_2_1632960656080"
+      },
+      "conditions": "@preço:(qual o valor da mensalidade)",
+      "dialog_node": "node_10_1632954055194",
+      "previous_sibling": "node_3_1632953207629"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "as inscrições começam de 01/06/2021 a 17/09/2021 e após isso teremos entrevistas nos dias 08/09/2021 a 21/09/2021 e no dia 23/09/2021 teremos os aceitos, após isso os aceitos terão do dia 27/09/2021 e 28/09/2021 para se matricularem.\nAs inscrições podem ser feitas via e-mail ipgss@fei.edu.br, mediante o envio eletrônico dos documentos solicitados abaixo em arquivos individuais (formato PDF) de até 1MB.\n\nCópia do diploma do Curso Superior devidamente registrado ou equivalente\nCópia do Histórico Escolar do Curso Superior\nCópia do RG - não é aceita a CNH\nCópia do CPF ou apresentar o Comprovante de Inscrição (Acesse o site da Receita Federal)\nCópia da Certidão de Nascimento ou Casamento\nCópia do comprovante de residência\nCurriculum Vitae atualizado\nUma foto recente."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_2_1632960656080"
+      },
+      "conditions": "@processo_seletivo:(como me matricular?)",
+      "dialog_node": "node_2_1632960496916",
+      "previous_sibling": "node_9_1632957099162"
+    },
+    {
+      "type": "standard",
+      "title": "Mais_duvidas",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "posso ajudar em mais alguma coisa?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "dialog_node": "node_2_1632960656080",
+      "previous_sibling": "node_9_1632944079289"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "O curso de Doutorado não poderá ser concluído em período inferior a 24 (vinte e quatro) e superior a 60 (sessenta) meses. e o de Mestrado não poderá ser concluído em período inferior a 12 (doze) e superior a 36 (trinta e seis) meses."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_2_1632960656080"
+      },
+      "conditions": "@duração:(qual a duração do curso)",
+      "dialog_node": "node_3_1632953207629",
+      "previous_sibling": "node_7_1632947402566"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "maravilha, qualquer coisa só mandar um Olá"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "@obrigado:(não, obrigado)",
+      "dialog_node": "node_4_1632962752792",
+      "previous_sibling": "node_2_1632960656080"
+    },
+    {
+      "type": "standard",
+      "title": "local",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "o campus se localiza em São Bernardo do Campo, perto bar Castelinho"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_2_1632960656080"
+      },
+      "conditions": "@Localização:(onde fica o campus?)",
+      "dialog_node": "node_7_1632947402566",
+      "previous_sibling": "node_8_1632945396386"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "nossos contatos são:\nTelefone ->(11) 4353-2910\nE-mail -> ppge@fei.edu.br"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_2_1632960656080"
+      },
+      "conditions": "@contato:(qual o contato?)",
+      "dialog_node": "node_7_1632963499171",
+      "previous_sibling": "node_2_1632960496916"
+    },
+    {
+      "type": "standard",
+      "title": "período",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "ambos os cursos são no período noturno."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_2_1632960656080"
+      },
+      "conditions": "@periodo:periodo",
+      "dialog_node": "node_8_1632945396386",
+      "previous_sibling": "node_4_1632962752792"
+    },
+    {
+      "type": "standard",
+      "title": "saudações",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "como posso ajudar?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#Saudação",
+      "dialog_node": "node_9_1632944079289",
+      "previous_sibling": "Bem-vindo"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "O programa de Mestrado e Doutorado em Engenharia Elétrica da FEI conta com bolsas da agência de fomento federal CAPES para dedicação em tempo integral e parcial. A FEI oferece, também, bolsas de isenção de pagamento de taxas escolares. Os alunos interessados em obter bolsa de estudos devem protocolar solicitação no ato da matrícula. Os critérios para concessão da bolsa são baseados na avaliação de mérito do desempenho acadêmico e da experiência profissional dos alunos aprovados no processo seletivo. Além disso, os alunos que solicitam bolsa para dedicação em tempo integral devem ter disponibilidade de 40 horas semanais e não possuir vínculo empregatício. Já a solicitação de bolsa para dedicação em tempo parcial requer disponibilidade de 20 horas semanais, podendo o aluno acumular o benefício com exercício profissional remunerado.\nAlém disso os alunos de Mestrado e Doutorado podem também solicitar bolsas de estudo externas em órgãos de fomento como:\n\nFAPESP: A Fundação de Amparo à Pesquisa do Estado de São Paulo é uma das principais agências de fomento à pesquisa científica e tecnológica do país. A FAPESP está ligada à Secretaria de Desenvolvimento Econômico, Ciência, Tecnologia e Inovação do Estado de São Paulo.\nacessando o link para mais informações: https://fapesp.br/\n\n"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_2_1632960656080"
+      },
+      "conditions": "@bolsa:(como posso pegar bolsa)",
+      "dialog_node": "node_9_1632954804545",
+      "previous_sibling": "node_10_1632954055194"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "as disciplinas de ambos os cursos são:\nINTELIGÊNCIA ARTIFICIAL APLICADA À AUTOMAÇÃO E ROBÓTICA:\nAcompanhamento de Dissertação / Tese\nAlgoritmos Computacionais\nEngenharia de Software em Experimentos Científicos\nFundamentos da Inteligência Artificial\nInteligência Artificial Probabilística\nInteração Humano-Computador em Sistemas Adaptativos\nProgramação Científica\nRobótica Móvel\nTópicos Especiais em Aprendizagem\n\n\nPROCESSAMENTO DE SINAIS E IMAGENS:\nAcompanhamento de Dissertação / Tese\nAplicações em Processamento de Sinais\nBiopotenciais: Características, Aquisição e Processamento\nFundamentos da Visão Computacional\nInteligência Computacional\nIntrodução à Engenharia Biomédica\nIntrodução à Pesquisa Científica\nMétodos Numéricos Aplicados em Análise de Sinais\nProcessamento de Sinais Discretos no Tempo\nProcessamento do Sinal de Voz\nTécnicas Avançadas de Programação\nRedação Ciêntífica\nReconhecimento de Padrões em Estatística"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_2_1632960656080"
+      },
+      "conditions": "@diciplinas:(quais são as disciplinas)",
+      "dialog_node": "node_9_1632957099162",
+      "previous_sibling": "node_9_1632954804545"
+    }
+  ],
+  "counterexamples": [],
+  "system_settings": {
+    "disambiguation": {
+      "prompt": "Você quis dizer:",
+      "enabled": true,
+      "randomize": true,
+      "max_suggestions": 5,
+      "suggestion_text_policy": "title",
+      "none_of_the_above_prompt": "Nenhuma das anteriores"
+    },
+    "human_agent_assist": {
+      "prompt": "Você quis dizer:"
+    }
+  },
+  "learning_opt_out": false,
+  "name": "Saudação",
+  "language": "pt-br",
+  "description": ""
+}
